@@ -9,7 +9,7 @@ import sampleEmployee from './data/sampleEmployee.json';
 
 class App extends Component {
   state = {
-    employeeList: [],
+    employeeList: sampleEmployee.results,
     first: sampleEmployee.results[0].name.first,
     last: sampleEmployee.results[0].name.last,
     city: sampleEmployee.results[0].location.city,
@@ -22,13 +22,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
+      {this.state.employeeList.map(employee => (
         <EmployeeCard
+          first={employee.name.first}
+          last={employee.name.last}
+          city={employee.location.city}
+          state={employee.location.state}
+          email={employee.email}
+        />
+      ))}
+
+        
+        {/* <EmployeeCard
           first={this.state.first}
           last={this.state.last}
           city={this.state.city}
           state={this.state.state}
           email={this.state.email}
-        />
+        /> */}
       </div>
     )
   }
